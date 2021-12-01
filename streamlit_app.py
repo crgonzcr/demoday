@@ -6,7 +6,7 @@ from PIL import Image
 #import numpy as np
 #from tensorflow import keras
 #from tensorflow.keras.models import load_model
-from tensorflow.keras import preprocessing
+#from tensorflow.keras import preprocessing
 import time
 
 fig = plt.figure()
