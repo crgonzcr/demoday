@@ -1,3 +1,4 @@
 tensorflow
 matplotlib
 numpy
+tensorflow_hub
