@@ -54,6 +54,7 @@ def predict(image):
     predictions = model.predict(test_image)
     scores = tf.nn.softmax(predictions[0])
     scores = scores.numpy()
+    print(scores)
     results = {
           'Healthy': 0,
           'Anomalous': 1
