@@ -47,7 +47,7 @@ def predict(image):
     #model = load_model(classifier_model, compile=False, custom_objects={'KerasLayer': hub.KerasLayer})
     test_image = image.resize((160,160))
     test_image = preprocessing.image.img_to_array(test_image)
-    test_image = test_image / 255.0
+    test_image = test_image / 127.5
     test_image = np.expand_dims(test_image, axis=0)
     class_names = [
           'Healthy', 
