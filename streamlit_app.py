@@ -43,7 +43,8 @@ def main():
 def predict(image):
     classifier_model = "model.h5"
     IMAGE_SHAPE = (160, 160,3)
-    model = load_model(classifier_model, compile=False, custom_objects={'KerasLayer': hub.KerasLayer})
+    model = load_model(classifier_model)
+    #model = load_model(classifier_model, compile=False, custom_objects={'KerasLayer': hub.KerasLayer})
     test_image = image.resize((160,160))
     test_image = preprocessing.image.img_to_array(test_image)
     test_image = test_image / 255.0
