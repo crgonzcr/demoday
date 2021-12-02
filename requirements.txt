@@ -1,5 +1,8 @@
-tensorflow
 matplotlib
+keras
+tensorflow
 numpy
-tensorflow_hub
+pandas
+streamlit
 opencv-python-headless
+Pillow
