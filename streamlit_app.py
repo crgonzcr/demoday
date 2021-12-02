@@ -41,7 +41,7 @@ def main():
 
 
 def predict(image):
-    classifier_model = "VADS_model.hdf5"
+    classifier_model = "model.h5"
     IMAGE_SHAPE = (224, 224,3)
     model = load_model(classifier_model, compile=False, custom_objects={'KerasLayer': hub.KerasLayer})
     test_image = image.resize((224,224))
