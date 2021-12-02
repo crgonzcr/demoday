@@ -1,6 +1,7 @@
 matplotlib
 keras
 tensorflow
+tensorflow_hub
 numpy
 pandas
 streamlit
