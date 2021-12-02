@@ -56,7 +56,7 @@ def predict(image):
     scores = scores.numpy()
     results = {
           'Healthy': 0,
-          'Anomalous': 0
+          'Anomalous': 1
 }
 
     
