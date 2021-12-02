@@ -7,7 +7,7 @@ from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2,preprocess_in
 
 model = tf.keras.models.load_model("saved_model/model.hdf5")
 ### load file
-uploaded_file = st.file_uploader("Choose a image file", type=['png', 'jpg'])
+uploaded_file = st.file_uploader("Choose a image file", type='png')
 
 map_dict = {0: 'dog',
             1: 'horse',
