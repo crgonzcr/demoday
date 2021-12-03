@@ -19,18 +19,18 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded Image', use_column_width=True)
           
-    #file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    #opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-    #opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
-    #resized = cv2.resize(opencv_image,(160,160))
-    # Now do something with the image! For example, let's display it:
-    #st.image(opencv_image, channels="RGB")
+    file_bytes = np.asarray(bytearray(image), dtype=np.uint8)
+    opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+    opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
+    resized = cv2.resize(opencv_image,(160,160))
+    Now do something with the image! For example, let's display it:
+    st.image(opencv_image, channels="RGB")
 
-    #resized = mobilenet_v2_preprocess_input(resized)
-    #img_reshape = resized[np.newaxis,...]
+    resized = mobilenet_v2_preprocess_input(resized)
+    img_reshape = resized[np.newaxis,...]
 
-    #Genrate_pred = st.button("Generate Prediction")    
-    #if Genrate_pred:
-    #    prediction = model.predict(img_reshape).argmax()
-    #    st.title("Predicted Label for the image is {}".format(map_dict [prediction]))
+    Genrate_pred = st.button("Generate Prediction")    
+    if Genrate_pred:
+       prediction = model.predict(img_reshape).argmax()
+       st.title("Predicted Label for the image is {}".format(map_dict [prediction]))
 
