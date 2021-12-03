@@ -29,7 +29,7 @@ if uploaded_file is not None:
 
    test_image = image.resize((160,160))
    test_image = preprocessing.image.img_to_array(test_image)
-   test_image = test_image / 127.5
+#    test_image = test_image / 127.5
    test_image = np.expand_dims(test_image, axis=0)
    class_names = [
            'Healthy', 
@@ -53,8 +53,8 @@ if uploaded_file is not None:
        logits = model(test_image)
        predictions = model.predict(test_image)
        st.write(predictions)
-       scores = tf.nn.softmax(predictions[0])
-       st.write(scores)
+#        scores = tf.nn.softmax(predictions[0])
+#        st.write(scores)
 #        scores = tf.nn.softmax(logits)
 #        scores = scores.numpy()
 #        results = {
