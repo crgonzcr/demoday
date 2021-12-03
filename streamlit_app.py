@@ -37,11 +37,18 @@ if uploaded_file is not None:
 #     #Now do something with the image! For example, let's display it:
 #     st.image(opencv_image, channels="RGB")
 
-    resized = mobilenet_v2_preprocess_input(test_image)
-    img_reshape = resized[np.newaxis,...]
+#     resized = mobilenet_v2_preprocess_input(test_image)
+#     img_reshape = resized[np.newaxis,...]
 
     Genrate_pred = st.button("Generate Prediction")    
     if Genrate_pred:
-       prediction = model.predict(resized)
-       st.title("Predicted Label for the image is {}".format(prediction))
+#        prediction = model.predict(resized)
+       predictions = model.predict(test_image)
+          scores = tf.nn.softmax(predictions[0])
+          scores = scores.numpy()
+          results = {
+             'Healthy': 0,
+             'Anomalous': 1
+          }
+       st.title("Predicted Label for the image is {}".format(scores))
 
