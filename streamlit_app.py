@@ -53,13 +53,13 @@ if uploaded_file is not None:
        logits = model(test_image)
        predictions = model.predict(test_image)
        st.write(predictions)
-#        scores = tf.nn.softmax(predictions[0])
-#        st.write(scores)
-#        scores = tf.nn.softmax(logits)
-#        scores = scores.numpy()
-#        results = {
-#               'Healthy': 0,
-#               'Anomalous': 1
-#        }
+       scores = tf.nn.softmax(predictions[0])
+       scores = scores.numpy()
+       results = {
+          'Healthy': 0,
+          'Anomalous': 1
+          }
+       result = f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } % confidence."
+       st.write(result)
        st.title("Predicted Label for the image is {}".format(map_dict[predictions[0]]))
 
