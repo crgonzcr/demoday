@@ -52,7 +52,8 @@ if uploaded_file is not None:
 #        prediction = model.predict(resized)
        logits = model(test_image)
        predictions = model.predict(test_image)
-       st.write(predictions[0])
-          
-       st.title("Predicted Label for the image is {}".format())
-
+#        st.write(predictions)
+       if (0 < predictions < 0.5):
+          st.title("Predicted Label for the image is Healthy")
+       else:
+          st.title("Predicted Label for the image is Anomalous")
