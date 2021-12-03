@@ -43,8 +43,10 @@ if uploaded_file is not None:
     Genrate_pred = st.button("Generate Prediction")    
     if Genrate_pred:
 #        prediction = model.predict(resized)
+       logits = model(test_image)
        predictions = model.predict(test_image)
-       scores = tf.nn.softmax(predictions[0])
+   #    scores = tf.nn.softmax(predictions[0])
+           scores = tf.nn.softmax(logits)
 #        scores = scores.numpy()
 #        results = {
 #               'Healthy': 0,
