@@ -13,8 +13,6 @@ map_dict = {0: 'Healthy',
           1: 'Anomalous'}
 
 st.title("Visual Anomaly Detection for Sewerage")
-st.header("Visual Anomaly Detection for Sewerage 2")
-st.markdown("Visual Anomaly Detection for Sewerage 💦")
 
 st.text("Upload a Sewerage Image for image classification as health or anomaly")
 
