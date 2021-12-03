@@ -16,46 +16,49 @@ map_dict = {0: 'Healthy',
 
 
 if uploaded_file is not None:
-    # Convert the file to an opencv image.
    image = Image.open(uploaded_file)
-          
-#    img = tf.keras.preprocessing.image.load_img(image, target_size=(160,160))
-#    img_array = tf.keras.preprocessing.image.img_to_array(img)
-#    img_array = tf.expand_dims(img_array, 0)
-#    pred = model.predict(img_array)
 
-#     image = Image.open(uploaded_file)
    st.image(image, caption='Uploaded Image', use_column_width=True)    
 
    test_image = image.resize((160,160))
    test_image = preprocessing.image.img_to_array(test_image)
-#    test_image = test_image / 127.5
    test_image = np.expand_dims(test_image, axis=0)
    class_names = [
            'Healthy', 
            'Anomalous']
-          
-#     file_bytes = np.asarray(image, dtype='uint8')
-          
-#     file_bytes = np.asarray(bytearray(image), dtype=np.uint8)
-#     opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-#     opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
-#     resized = cv2.resize(opencv_image,(160,160))
-#     #Now do something with the image! For example, let's display it:
-#     st.image(opencv_image, channels="RGB")
-
-#     resized = mobilenet_v2_preprocess_input(test_image)
-#     img_reshape = resized[np.newaxis,...]
-
    Genrate_pred = st.button("Generate Prediction")    
    if Genrate_pred:
-#        prediction = model.predict(resized)
-#        logits = model(test_image)
        predictions = model.predict(test_image)
        scores = tf.nn.softmax(predictions[0])
-#        st.write(predictions)
-#        st.write(scores)
        if (0 < predictions < 5):
           st.title("Predicted Label for the image is Healthy")
        else:
           st.title("Predicted Label for the image is Anomalous")
+        
+
+
+uploaded_video = st.file_uploader("Choose video", type=["mp4", "mov"])
+frame_skip = 300 # display every 300 frames
+
+if uploaded_video is not None: # run only when user uploads video
+    vid = uploaded_video.name
+    with open(vid, mode='wb') as f:
+        f.write(uploaded_video.read()) # save video to disk
+
+    st.markdown(f"""
+    ### Files
+    - {vid}
+    """,
+    unsafe_allow_html=True) # display file name
+
+    vidcap = cv2.VideoCapture(vid) # load video from disk
+    cur_frame = 0
+    success = True
+
+    while success:
+        success, frame = vidcap.read() # get next frame from video
+        if cur_frame % frame_skip == 0: # only analyze every n=300 frames
+            print('frame: {}'.format(cur_frame)) 
+            pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
+            st.image(pil_img)
+        cur_frame += 1
