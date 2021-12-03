@@ -14,7 +14,7 @@ map_dict = {0: 'Healthy',
 
 st.title("Visual Anomaly Detection for Sewerage")
 
-st.text("Upload a Sewerage Image for image classification as health or anomaly")
+st.text("Upload a sewage video to classify it as healthy or anomalous")
 
 uploaded_video = st.file_uploader("Choose video", type=["mp4", "avi"])
 # frame_skip = 10 # display every 300 frames
