@@ -37,7 +37,7 @@ if uploaded_video is not None: # run only when user uploads video
     success = True
 
     st.text("Frames")
-    frame = st.text_input("Selecciona el N° de frames:", )
+    frame = st.number_input("Selecciona el N° de frames:", )
     st.write(frame)
     cur_frame = 300
     frame_skip = frame
