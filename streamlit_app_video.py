@@ -68,13 +68,11 @@ if uploaded_video is not None: # run only when user uploads video
             class_names = [
                     'Healthy', 
                     'Anomalous']
-            Genrate_pred = st.button("Generate Prediction")    
-            if Genrate_pred:
-                predictions = model.predict(test_image)
-                scores = tf.nn.softmax(predictions[0])
-                if (0 < predictions < 5):
-                   st.title("Predicted Label for the image is Healthy")
-                else:
-                   st.title("Predicted Label for the image is Anomalous")
+            predictions = model.predict(test_image)
+            scores = tf.nn.softmax(predictions[0])
+            if (0 < predictions < 5):
+                st.title("Predicted Label for the image is Healthy")
+            else:
+                st.title("Predicted Label for the image is Anomalous")
           
         cur_frame += 1
