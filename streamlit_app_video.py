@@ -19,7 +19,7 @@ st.markdown("Visual Anomaly Detection for Sewerage 💦")
 st.text("Upload a Sewerage Image for image classification as health or anomaly")
 
 uploaded_video = st.file_uploader("Choose video", type=["mp4", "avi"])
-frame_skip = 10 # display every 300 frames
+# frame_skip = 10 # display every 300 frames
 
 if uploaded_video is not None: # run only when user uploads video
     vid = uploaded_video.name
@@ -39,7 +39,8 @@ if uploaded_video is not None: # run only when user uploads video
     st.text("Frames")
     frame = st.text_input("Selecciona el N° de frames:", )
     st.write(frame)
-    cur_frame = 300
+    cur_frame = frame
+    frame_skip = frame
           
     Genrate_pred = st.button("Generate Prediction") 
 
