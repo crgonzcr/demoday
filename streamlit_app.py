@@ -17,7 +17,8 @@ map_dict = {'Healthy': 0,
 
 if uploaded_file is not None:
     # Convert the file to an opencv image.
-   img = tf.keras.preprocessing.image.load_img(uploaded_file, target_size=(160,160))
+   image = Image.open(uploaded_file)
+   img = tf.keras.preprocessing.image.load_img(image, target_size=(160,160))
    img_array = tf.keras.preprocessing.image.img_to_array(img)
    img_array = tf.expand_dims(img_array, 0)
    pred = model.predict(img_array)
