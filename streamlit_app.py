@@ -16,6 +16,7 @@ map_dict = {'Healthy': 0,
 if uploaded_file is not None:
     # Convert the file to an opencv image.
     st.image(Image.open(uploaded_file))
+          """
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
     opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
@@ -30,3 +31,4 @@ if uploaded_file is not None:
     if Genrate_pred:
         prediction = model.predict(img_reshape).argmax()
         st.title("Predicted Label for the image is {}".format(map_dict [prediction]))
+"""
