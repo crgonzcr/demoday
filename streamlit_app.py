@@ -54,7 +54,7 @@ if uploaded_file is not None:
        predictions = model.predict(test_image)
        st.write(predictions)
        scores = tf.nn.softmax(predictions[0])
-       scores = scores.numpy()
+#        scores = scores.numpy()
        results = {
           'Healthy': 0,
           'Anomalous': 1
