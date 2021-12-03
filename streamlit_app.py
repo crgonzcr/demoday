@@ -17,10 +17,9 @@ if uploaded_file is not None:
     # Convert the file to an opencv image.
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     try:
-            opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_ANYCOLOR)
+            opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
     except:
             print(file_bytes)
-            quit()
     opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
     resized = cv2.resize(opencv_image,(160,160))
     # Now do something with the image! For example, let's display it:
