@@ -28,7 +28,7 @@ if uploaded_file is not None:
 #     test_image = preprocessing.image.img_to_array(test_image)
 #     test_image = test_image / 127.5
 #     test_image = np.expand_dims(test_image, axis=0)
-      class_names = [
+   class_names = [
            'Healthy', 
            'Anomalous']
           
