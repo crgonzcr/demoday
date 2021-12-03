@@ -18,17 +18,19 @@ map_dict = {'Healthy': 0,
 if uploaded_file is not None:
     # Convert the file to an opencv image.
    image = Image.open(uploaded_file)
-   img = tf.keras.preprocessing.image.load_img(image, target_size=(160,160))
-   img_array = tf.keras.preprocessing.image.img_to_array(img)
-   img_array = tf.expand_dims(img_array, 0)
-   pred = model.predict(img_array)
+          
+#    img = tf.keras.preprocessing.image.load_img(image, target_size=(160,160))
+#    img_array = tf.keras.preprocessing.image.img_to_array(img)
+#    img_array = tf.expand_dims(img_array, 0)
+#    pred = model.predict(img_array)
+
 #     image = Image.open(uploaded_file)
 #     st.image(image, caption='Uploaded Image', use_column_width=True)    
 
-#     test_image = image.resize((160,160))
-#     test_image = preprocessing.image.img_to_array(test_image)
-#     test_image = test_image / 127.5
-#     test_image = np.expand_dims(test_image, axis=0)
+   test_image = image.resize((160,160))
+   test_image = preprocessing.image.img_to_array(test_image)
+   test_image = test_image / 127.5
+   test_image = np.expand_dims(test_image, axis=0)
    class_names = [
            'Healthy', 
            'Anomalous']
@@ -50,8 +52,10 @@ if uploaded_file is not None:
 #        prediction = model.predict(resized)
        logits = model(test_image)
        predictions = model.predict(test_image)
-   #    scores = tf.nn.softmax(predictions[0])
-       scores = tf.nn.softmax(logits)
+       st.write(predictions)
+       scores = tf.nn.softmax(predictions[0])
+       st.write(scores)
+#        scores = tf.nn.softmax(logits)
 #        scores = scores.numpy()
 #        results = {
 #               'Healthy': 0,
