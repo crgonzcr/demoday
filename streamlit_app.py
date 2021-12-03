@@ -17,16 +17,20 @@ map_dict = {'Healthy': 0,
 
 if uploaded_file is not None:
     # Convert the file to an opencv image.
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True)    
+   img = tf.keras.preprocessing.image.load_img(uploaded_file, target_size=(160,160))
+   img_array = tf.keras.preprocessing.image.img_to_array(img)
+   img_array = tf.expand_dims(img_array, 0)
+   pred = model.predict(img_array)
+#     image = Image.open(uploaded_file)
+#     st.image(image, caption='Uploaded Image', use_column_width=True)    
 
-    test_image = image.resize((160,160))
-    test_image = preprocessing.image.img_to_array(test_image)
-    test_image = test_image / 127.5
-    test_image = np.expand_dims(test_image, axis=0)
-    class_names = [
-          'Healthy', 
-          'Anomalous']
+#     test_image = image.resize((160,160))
+#     test_image = preprocessing.image.img_to_array(test_image)
+#     test_image = test_image / 127.5
+#     test_image = np.expand_dims(test_image, axis=0)
+      class_names = [
+           'Healthy', 
+           'Anomalous']
           
 #     file_bytes = np.asarray(image, dtype='uint8')
           
@@ -52,5 +56,5 @@ if uploaded_file is not None:
 #               'Healthy': 0,
 #               'Anomalous': 1
 #        }
-       st.title("Predicted Label for the image is {}".format(scores))
+       st.title("Predicted Label for the image is {}".format(pred))
 
