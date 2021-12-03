@@ -46,7 +46,7 @@ if uploaded_file is not None:
        logits = model(test_image)
        predictions = model.predict(test_image)
    #    scores = tf.nn.softmax(predictions[0])
-           scores = tf.nn.softmax(logits)
+       scores = tf.nn.softmax(logits)
 #        scores = scores.numpy()
 #        results = {
 #               'Healthy': 0,
