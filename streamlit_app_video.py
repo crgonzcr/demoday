@@ -38,7 +38,7 @@ if uploaded_file is not None:
 
 
 uploaded_video = st.file_uploader("Choose video", type=["mp4", "avi"])
-frame_skip = 10 # display every 300 frames
+frame_skip = 100 # display every 300 frames
 
 if uploaded_video is not None: # run only when user uploads video
     vid = uploaded_video.name
