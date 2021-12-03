@@ -11,8 +11,8 @@ model = tf.keras.models.load_model("saved_model/model.hdf5")
 ### load file
 uploaded_file = st.file_uploader("Choose File", type=["png","jpg","jpeg"])
 
-map_dict = {'Healthy': 0,
-          'Anomalous': 1}
+map_dict = {0: 'Healthy',
+          1: 'Anomalous'}
 
 
 if uploaded_file is not None:
@@ -61,5 +61,5 @@ if uploaded_file is not None:
 #               'Healthy': 0,
 #               'Anomalous': 1
 #        }
-       st.title("Predicted Label for the image is {}".format(predictions))
+       st.title("Predicted Label for the image is {}".format(map_dict[prediction])))
 
