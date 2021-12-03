@@ -45,10 +45,10 @@ if uploaded_file is not None:
 #        prediction = model.predict(resized)
        predictions = model.predict(test_image)
        scores = tf.nn.softmax(predictions[0])
-       scores = scores.numpy()
-       results = {
-              'Healthy': 0,
-              'Anomalous': 1
-       }
+#        scores = scores.numpy()
+#        results = {
+#               'Healthy': 0,
+#               'Anomalous': 1
+#        }
        st.title("Predicted Label for the image is {}".format(scores))
 
