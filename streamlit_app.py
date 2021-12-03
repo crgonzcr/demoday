@@ -59,7 +59,7 @@ if uploaded_file is not None:
           'Healthy': 0,
           'Anomalous': 1
           }
-       st.write(score)
+       st.write(scores)
        result = f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } % confidence."
        st.title(result)
 
