@@ -46,20 +46,21 @@ if uploaded_video is not None: # run only when user uploads video
         success, frame = vidcap.read() # get next frame from video
         if cur_frame % frame_skip == 0: # only analyze every n=300 frames
             print('frame: {}'.format(cur_frame)) 
-            pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
-            st.image(pil_img)
+            if frame:
+                pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
+                st.image(pil_img)
           
-            test_image = pil_img.resize((160,160))
-            test_image = preprocessing.image.img_to_array(test_image)
-            test_image = np.expand_dims(test_image, axis=0)
-            class_names = [
-                    'Healthy', 
-                    'Anomalous']
-            predictions = model.predict(test_image)
-            scores = tf.nn.softmax(predictions[0])
-            if (0 < predictions < 5):
-                st.title("Predicted Label for the image is Healthy")
-            else:
-                st.title("Predicted Label for the image is Anomalous")
+                test_image = pil_img.resize((160,160))
+                test_image = preprocessing.image.img_to_array(test_image)
+                test_image = np.expand_dims(test_image, axis=0)
+                class_names = [
+                        'Healthy', 
+                        'Anomalous']
+                predictions = model.predict(test_image)
+                scores = tf.nn.softmax(predictions[0])
+                if (0 < predictions < 5):
+                    st.title("Predicted Label for the image is Healthy")
+                else:
+                    st.title("Predicted Label for the image is Anomalous")
           
         cur_frame += 1
