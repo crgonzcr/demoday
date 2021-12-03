@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from PIL import Image
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
@@ -7,7 +8,7 @@ from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2,preprocess_in
 
 model = tf.keras.models.load_model("saved_model/model.hdf5")
 ### load file
-uploaded_file = st.file_uploader("Choose a image file", type='png')
+uploaded_file = st.file_uploader("Choose File", type=["png","jpg","jpeg"])
 
 map_dict = {'Healthy': 0,
           'Anomalous': 1}
@@ -15,7 +16,8 @@ map_dict = {'Healthy': 0,
 
 if uploaded_file is not None:
     # Convert the file to an opencv image.
-    st.image(Image.open(uploaded_file))
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded Image', use_column_width=True)
           
     #file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     #opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
