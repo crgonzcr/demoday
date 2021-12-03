@@ -18,8 +18,9 @@ if uploaded_file is not None:
     # Convert the file to an opencv image.
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded Image', use_column_width=True)
+    file_bytes = np.asarray(image, dtype='uint8')
           
-    file_bytes = np.asarray(bytearray(image), dtype=np.uint8)
+#     file_bytes = np.asarray(bytearray(image), dtype=np.uint8)
     opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
     opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
     resized = cv2.resize(opencv_image,(160,160))
