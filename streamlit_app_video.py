@@ -33,13 +33,16 @@ if uploaded_video is not None: # run only when user uploads video
     unsafe_allow_html=True) # display file name
 
     vidcap = cv2.VideoCapture(vid) # load video from disk
-    cur_frame = 0
+    
     success = True
 
     st.text("Frames")
     frame = st.slider("Selecciona el N° de frames:", 100, 150, 300)
+    cur_frame = frame
+          
+    Genrate_pred = st.button("Generate Prediction") 
 
-    while success:
+    while Genrate_pred:
         success, frame = vidcap.read() # get next frame from video
         if cur_frame % frame_skip == 0: # only analyze every n=300 frames
             print('frame: {}'.format(cur_frame)) 
