@@ -64,5 +64,5 @@ if uploaded_video is not None: # run only when user uploads video
                     st.title("Predicted Label for the image is Anomalous")
           
         cur_frame += 1
-        if success == false:
+        if success == False:
             break
