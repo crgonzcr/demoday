@@ -61,5 +61,5 @@ if uploaded_file is not None:
 #               'Healthy': 0,
 #               'Anomalous': 1
 #        }
-       st.title("Predicted Label for the image is {}".format(map_dict [prediction]))
+       st.title("Predicted Label for the image is {}".format(map_dict[prediction]))
 
