@@ -53,8 +53,8 @@ if uploaded_file is not None:
 #        logits = model(test_image)
        predictions = model.predict(test_image)
        scores = tf.nn.softmax(predictions[0])
-       st.write(predictions)
-       st.write(scores)
+#        st.write(predictions)
+#        st.write(scores)
        if (0 < predictions < 5):
           st.title("Predicted Label for the image is Healthy")
        else:
