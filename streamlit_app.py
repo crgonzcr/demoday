@@ -59,7 +59,7 @@ if uploaded_file is not None:
           'Healthy': 0,
           'Anomalous': 1
           }
+       st.write(score)
        result = f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } % confidence."
-       st.write(result)
-       st.title("Predicted Label for the image is {}".format(map_dict[predictions[0]]))
+       st.title(result)
 
