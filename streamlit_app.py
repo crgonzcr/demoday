@@ -63,8 +63,8 @@ if uploaded_video is not None: # run only when user uploads video
                     st.title("Predicted Label for the image is Healthy")
                 else:
                     st.title("Predicted Label for the image is Anomalous")
-            else:
-                break
+#             else:
+#                 break
           
         cur_frame += 1
 #         if success == False:
