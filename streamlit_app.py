@@ -37,13 +37,13 @@ if uploaded_video is not None: # run only when user uploads video
     st.text("Frames")
     frame = st.number_input("Selecciona el N° de frames:", )
     st.write(frame)
-    cur_frame = frame
-    frame_skip = frame
+    cur_frame = 300
+    frame_skip = 300
           
     Genrate_pred = st.button("Generate Prediction") 
     
     
-    while Genrate_pred:
+    while true:
         success, frame = vidcap.read() # get next frame from video
         if cur_frame % frame_skip == 0: # only analyze every n=300 frames
             print('frame: {}'.format(cur_frame)) 
