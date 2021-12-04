@@ -36,7 +36,7 @@ if uploaded_video is not None: # run only when user uploads video
 
     st.text("Frames")
     frame = st.number_input("Selecciona el N° de frames:", )
-    st.write(frame)
+#     st.write(frame)
     cur_frame = 300
     frame_skip = 300
           
@@ -47,7 +47,7 @@ if uploaded_video is not None: # run only when user uploads video
         success, frame = vidcap.read() # get next frame from video
         if cur_frame % frame_skip == 0: # only analyze every n=300 frames
             print('frame: {}'.format(cur_frame)) 
-            st.write(success)
+#             st.write(success)
             if success:
                 pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
                 st.image(pil_img)
@@ -64,8 +64,8 @@ if uploaded_video is not None: # run only when user uploads video
                     st.title("Predicted Label for the image is Healthy")
                 else:
                     st.title("Predicted Label for the image is Anomalous")
-#             else:
-#                 break
+            else:
+                break
           
         cur_frame += 1
 #         if success == False:
