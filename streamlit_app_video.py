@@ -35,7 +35,7 @@ if uploaded_video is not None: # run only when user uploads video
     success = True
 
     st.text("Frames")
-    frame = st.number_input("Selecciona el N° de frames:", )
+    frame = st.number_input("Analisis cada X frames:", )
 #     st.write(frame)
     cur_frame = frame
     frame_skip = frame
@@ -61,9 +61,9 @@ if uploaded_video is not None: # run only when user uploads video
                 predictions = model.predict(test_image)
                 scores = tf.nn.softmax(predictions[0])
                 if (0 < predictions < 5):
-                    st.title("Predicted Label for the image is Healthy")
+                    st.write("Predicted Label for the image is \033Healthy")
                 else:
-                    st.title("Predicted Label for the image is Anomalous")
+                    st.write("Predicted Label for the image is \033Anomalous")
             else:
                 break
           
