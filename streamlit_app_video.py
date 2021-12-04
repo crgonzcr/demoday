@@ -37,8 +37,8 @@ if uploaded_video is not None: # run only when user uploads video
     st.text("Frames")
     frame = st.number_input("Selecciona el N° de frames:", )
 #     st.write(frame)
-    cur_frame = 300
-    frame_skip = 300
+    cur_frame = frame
+    frame_skip = frame
           
     Genrate_pred = st.button("Generate Prediction") 
     
