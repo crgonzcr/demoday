@@ -43,7 +43,7 @@ if uploaded_video is not None: # run only when user uploads video
     Genrate_pred = st.button("Generate Prediction") 
     
     
-    while success:
+    while Genrate_pred:
         success, frame = vidcap.read() # get next frame from video
         if cur_frame % frame_skip == 0: # only analyze every n=300 frames
             print('frame: {}'.format(cur_frame)) 
