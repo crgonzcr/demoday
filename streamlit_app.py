@@ -41,7 +41,8 @@ if uploaded_video is not None: # run only when user uploads video
     frame_skip = frame
           
     Genrate_pred = st.button("Generate Prediction") 
-
+    
+    
     while Genrate_pred:
         success, frame = vidcap.read() # get next frame from video
         if cur_frame % frame_skip == 0: # only analyze every n=300 frames
@@ -62,7 +63,9 @@ if uploaded_video is not None: # run only when user uploads video
                     st.title("Predicted Label for the image is Healthy")
                 else:
                     st.title("Predicted Label for the image is Anomalous")
+            else:
+                break
           
         cur_frame += 1
-        if success == False:
-            break
+#         if success == False:
+#             break
