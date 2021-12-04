@@ -61,9 +61,9 @@ if uploaded_video is not None: # run only when user uploads video
                 predictions = model.predict(test_image)
                 scores = tf.nn.softmax(predictions[0])
                 if (0 < predictions < 5):
-                    st.write("Predicted Label for the image is \033Healthy")
+                    st.write("Predicted Label for the image is \bHealthy")
                 else:
-                    st.write("Predicted Label for the image is \033Anomalous")
+                    st.write("Predicted Label for the image is \bAnomalous")
             else:
                 break
           
